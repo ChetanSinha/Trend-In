@@ -1,31 +1,94 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View, Button } from "react-native";
+import {
+  Container,
+  Header,
+  Content,
+  ScrollableTab,
+  Tab,
+  Tabs,
+  Left,
+  Body,
+  Right,
+  Title,
+} from "native-base";
 
 import styled from "styled-components";
 
+// Import tabs:
+import BreakingNews from "../screens/GeneralScreens/BreakingNews";
+import Business from "../screens/GeneralScreens/Business";
+import Tech from "../screens/GeneralScreens/Tech";
+import Sports from "../screens/GeneralScreens/Sports";
+import Health from "../screens/GeneralScreens/Health";
+
 export default class General extends Component {
   render() {
+    const source = this.props.navigation.getParam("name") | "News API";
+
     return (
       <>
         <Container>
-          <Text> Hello from general source </Text>
-          <Button
-            title="specific sources"
-            onPress={() => this.props.navigation.navigate("Specific")}
-          />
-          <Button
-            title="Home"
-            onPress={() => this.props.navigation.navigate("Home")}
-          />
+          <Header style={{ backgroundColor: "#0B3861" }} hasTabs>
+            <Left />
+            <Body>
+              <Title style={{ color: "white" }}>Breaking News</Title>
+            </Body>
+            <Left />
+          </Header>
+
+          <Tabs
+            renderTabBar={() => <ScrollableTab />}
+            tabBarUnderlineStyle={{ backgroundColor: "white" }}
+          >
+            <Tab
+              tabStyle={{ backgroundColor: "#0B3861" }}
+              activeTabStyle={{ backgroundColor: "#0B3861" }}
+              textStyle={{ color: "white" }}
+              activeTextStyle={{ color: "white" }}
+              heading="General"
+            >
+              <BreakingNews />
+            </Tab>
+            <Tab
+              tabStyle={{ backgroundColor: "#0B3861" }}
+              activeTabStyle={{ backgroundColor: "#0B3861" }}
+              textStyle={{ color: "white" }}
+              activeTextStyle={{ color: "white" }}
+              heading="Business"
+            >
+              <Business />
+            </Tab>
+            <Tab
+              tabStyle={{ backgroundColor: "#0B3861" }}
+              activeTabStyle={{ backgroundColor: "#0B3861" }}
+              textStyle={{ color: "white" }}
+              activeTextStyle={{ color: "white" }}
+              heading="Technology"
+            >
+              <Tech />
+            </Tab>
+            <Tab
+              tabStyle={{ backgroundColor: "#0B3861" }}
+              activeTabStyle={{ backgroundColor: "#0B3861" }}
+              textStyle={{ color: "white" }}
+              activeTextStyle={{ color: "white" }}
+              heading="Sports"
+            >
+              <Sports />
+            </Tab>
+            <Tab
+              tabStyle={{ backgroundColor: "#0B3861" }}
+              activeTabStyle={{ backgroundColor: "#0B3861" }}
+              textStyle={{ color: "white" }}
+              activeTextStyle={{ color: "white" }}
+              heading="Health Care"
+            >
+              <Health />
+            </Tab>
+          </Tabs>
         </Container>
       </>
     );
   }
 }
-
-const Container = styled.View`
-  flex: 1;
-  background: teal;
-  justify-content: center;
-  align-items: center;
-`;
