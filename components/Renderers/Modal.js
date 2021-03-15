@@ -14,6 +14,8 @@ import {
   View,
 } from "native-base";
 
+import { Ionicons } from "@expo/vector-icons";
+
 export default class ModalComponent extends Component {
   constructor(props) {
     super(props);
@@ -50,7 +52,7 @@ export default class ModalComponent extends Component {
             <Header style={{ backgroundColor: "#0B3861" }}>
               <Left>
                 <Button onPress={this.handleClose} transparent>
-                  <Icon name="close" style={{ color: "white", fontSize: 20 }} />
+                  <Icon name="close" style={{ color: "white", fontSize: 24 }} />
                 </Button>
               </Left>
               <Body>
@@ -60,17 +62,17 @@ export default class ModalComponent extends Component {
                 ></Title>
               </Body>
               <Right>
-                {/* <Button onPress={this.handleShare} transparent>
-                  <Icon
-                    name="md-share"
-                    // android="md-menu"
-                    style={{ color: "white", fontSize: 20 }}
+                <Button onPress={this.handleShare} transparent>
+                  <Ionicons
+                    name="md-share-social-outline"
+                    size={24}
+                    color="white"
                   />
-                </Button> */}
+                </Button>
               </Right>
             </Header>
             {/* <View> */}
-            <Content contentContainerStyle={{ height: 600 }}>
+            <Content contentContainerStyle={{ height: 700 }}>
               <WebView
                 source={{ uri: url }}
                 style={{ flex: 1 }}

@@ -25,8 +25,13 @@ export default class DataItem extends Component {
   };
 
   render() {
-    const title = this.data.title.split("-");
-    title.pop();
+    let title;
+    if (this.props.isSpecific) {
+      title = this.data.title;
+    } else {
+      title = this.data.title.split("-");
+      title.pop();
+    }
 
     return (
       <ListItem thumbnail>
@@ -42,8 +47,13 @@ export default class DataItem extends Component {
           />
         </Left>
         <Body>
-          <Text>{title.join(" ")}</Text>
-          <Text note numberOfLines={2}>
+          {this.props.isSpecific ? (
+            <Text>{title}</Text>
+          ) : (
+            <Text>{title.join(" ")}</Text>
+          )}
+
+          <Text note numberOfLines={3}>
             {this.data.description}
           </Text>
           <View

@@ -1,9 +1,9 @@
-import { articleURL, API_KEY } from "../config/APIConfig";
+import { articleURL, language, API_KEY } from "../config/APIConfigFull";
 
-export async function getArticles(category = "general", countryCode = "in") {
+export async function getArticles(sources = "bbc-news") {
   try {
     const query = await fetch(
-      `${articleURL}?country=${countryCode}&category=${category}`,
+      `${articleURL}?sources=${sources}&language=${language}`,
       {
         headers: {
           "X-API-KEY": API_KEY,

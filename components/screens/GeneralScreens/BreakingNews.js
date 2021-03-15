@@ -83,6 +83,7 @@ export default class ListThumbnailExample extends Component {
               key={randomId}
               onPress={this.handleItemDataOnPress}
               data={item}
+              isSpecific={false}
             />
           );
         }}

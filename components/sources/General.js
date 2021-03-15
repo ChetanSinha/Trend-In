@@ -24,7 +24,7 @@ import Health from "../screens/GeneralScreens/Health";
 
 export default class General extends Component {
   render() {
-    const source = this.props.navigation.getParam("name") | "News API";
+    const source = this.props.navigation.getParam("name") | "news_api";
 
     return (
       <>
@@ -48,7 +48,7 @@ export default class General extends Component {
               activeTextStyle={{ color: "white" }}
               heading="General"
             >
-              <BreakingNews />
+              <BreakingNews source={source} />
             </Tab>
             <Tab
               tabStyle={{ backgroundColor: "#0B3861" }}
@@ -57,7 +57,7 @@ export default class General extends Component {
               activeTextStyle={{ color: "white" }}
               heading="Business"
             >
-              <Business />
+              <Business source={source} />
             </Tab>
             <Tab
               tabStyle={{ backgroundColor: "#0B3861" }}
@@ -66,7 +66,7 @@ export default class General extends Component {
               activeTextStyle={{ color: "white" }}
               heading="Technology"
             >
-              <Tech />
+              <Tech source={source} />
             </Tab>
             <Tab
               tabStyle={{ backgroundColor: "#0B3861" }}
@@ -75,7 +75,7 @@ export default class General extends Component {
               activeTextStyle={{ color: "white" }}
               heading="Sports"
             >
-              <Sports />
+              <Sports source={source} />
             </Tab>
             <Tab
               tabStyle={{ backgroundColor: "#0B3861" }}
@@ -84,7 +84,7 @@ export default class General extends Component {
               activeTextStyle={{ color: "white" }}
               heading="Health Care"
             >
-              <Health />
+              <Health source={source} />
             </Tab>
           </Tabs>
         </Container>
