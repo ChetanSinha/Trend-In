@@ -22,10 +22,26 @@ import Tech from "../screens/GeneralScreens/Tech";
 import Sports from "../screens/GeneralScreens/Sports";
 import Health from "../screens/GeneralScreens/Health";
 
-export default class General extends Component {
-  render() {
-    const source = this.props.navigation.getParam("name") | "news_api";
+import Picker from "../elements/Picker";
 
+export default class General extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      countryCode: "in",
+    };
+  }
+
+  handleCountryPicker = (countryCode) => {
+    this.setState({
+      countryCode,
+    });
+    // window.location.reload(false);
+  };
+
+  render() {
+    console.log(this.state.countryCode);
     return (
       <>
         <Container>
@@ -35,6 +51,11 @@ export default class General extends Component {
               <Title style={{ color: "white" }}>Breaking News</Title>
             </Body>
             <Left />
+            <Right>
+              <Container>
+                <Picker onPick={this.handleCountryPicker} />
+              </Container>
+            </Right>
           </Header>
 
           <Tabs
@@ -48,8 +69,9 @@ export default class General extends Component {
               activeTextStyle={{ color: "white" }}
               heading="General"
             >
-              <BreakingNews source={source} />
+              <BreakingNews country={this.state.countryCode} />
             </Tab>
+
             <Tab
               tabStyle={{ backgroundColor: "#0B3861" }}
               activeTabStyle={{ backgroundColor: "#0B3861" }}
@@ -57,7 +79,7 @@ export default class General extends Component {
               activeTextStyle={{ color: "white" }}
               heading="Business"
             >
-              <Business source={source} />
+              <Business country={this.state.countryCode} />
             </Tab>
             <Tab
               tabStyle={{ backgroundColor: "#0B3861" }}
@@ -66,7 +88,7 @@ export default class General extends Component {
               activeTextStyle={{ color: "white" }}
               heading="Technology"
             >
-              <Tech source={source} />
+              <Tech country={this.state.countryCode} />
             </Tab>
             <Tab
               tabStyle={{ backgroundColor: "#0B3861" }}
@@ -75,7 +97,7 @@ export default class General extends Component {
               activeTextStyle={{ color: "white" }}
               heading="Sports"
             >
-              <Sports source={source} />
+              <Sports country={this.state.countryCode} />
             </Tab>
             <Tab
               tabStyle={{ backgroundColor: "#0B3861" }}
@@ -84,7 +106,7 @@ export default class General extends Component {
               activeTextStyle={{ color: "white" }}
               heading="Health Care"
             >
-              <Health source={source} />
+              <Health country={this.state.countryCode} />
             </Tab>
           </Tabs>
         </Container>
