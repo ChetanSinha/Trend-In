@@ -19,9 +19,6 @@ export default class PickerWithIcon extends Component {
     );
   }
 
-  // onValueChange = () => {
-  // };
-
   render() {
     return (
       <Picker
@@ -35,7 +32,15 @@ export default class PickerWithIcon extends Component {
         <Picker.Item label="India" value="in" />
         <Picker.Item label="USA" value="us" />
         <Picker.Item label="UK" value="gb" />
+        <Picker.Item label="France" value="fr" />
+        <Picker.Item label="UAE" value="ae" />
+        <Picker.Item label="Italy" value="it" />
+        <Picker.Item label="China" value="cn" />
+        <Picker.Item label="Canada" value="ca" />
+        <Picker.Item label="Japan" value="jp" />
+        <Picker.Item label="Saudi Arab" value="sa" />
         <Picker.Item label="Germany" value="de" />
+        <Picker.Item label="New Zealand" value="nz" />
         <Picker.Item label="Australia" value="au" />
       </Picker>
     );

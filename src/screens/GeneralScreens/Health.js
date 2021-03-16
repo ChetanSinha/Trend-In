@@ -26,6 +26,7 @@ export default class ListThumbnailExample extends Component {
       data: null,
       setModalVisible: false,
       modalArticleData: {},
+      countryCode: this.props.country,
     };
   }
 
@@ -53,6 +54,26 @@ export default class ListThumbnailExample extends Component {
       (error) => {
         Alert.alert("Error", "something went wrong!");
       };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // console.log("prev state country code", prevState.countryCode);
+    // console.log("prev prop ", prevProps);
+    // console.log("current prop", this.props.country);
+
+    if (prevProps.country !== this.props.country) {
+      getArticles("health", this.props.country).then((data) => {
+        this.setState({
+          isLoading: false,
+          data: data,
+        });
+      }),
+        (error) => {
+          Alert.alert("Error", "something went wrong!");
+        };
+    } else {
+      console.log("same");
+    }
   }
 
   render() {
