@@ -11,7 +11,8 @@ import {
 } from "react-native";
 
 import styled from "styled-components";
-import { Ionicons } from "@expo/vector-icons";
+
+import { FontAwesome } from "@expo/vector-icons";
 
 import SourceList from "../sources/sourceList";
 
@@ -30,11 +31,8 @@ export default class MainScreen extends Component {
   };
 
   render() {
-    console.log(this.state.input.topic);
     return (
       <>
-        {/* <SearchBar /> */}
-
         <View
           style={{
             padding: 5,
@@ -46,15 +44,18 @@ export default class MainScreen extends Component {
         >
           {/* <Ionicons name="md-arrow-back" size={24} /> */}
           <TextInput
-            style={{ width: "70%", backgroundColor: "#e6e6e6" }}
+            style={{ width: "85%", backgroundColor: "#e6e6e6" }}
             value={this.state.input.topic}
             placeholder=" Search Topics"
             onChangeText={this.handleInput}
           />
-          <Ionicons
-            name="md-send"
+
+          <FontAwesome
+            name="search"
             size={24}
+            color="black"
             onPress={() =>
+              this.state.input.topic !== "" &&
               this.props.navigation.navigate("SearchTopic", this.state.input)
             }
           />

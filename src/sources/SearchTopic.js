@@ -58,9 +58,6 @@ export default class SearchTopic extends Component {
   }
 
   render() {
-    console.log("topic", this.state.topic);
-    console.log("loading", this.state.isLoading);
-    console.log("data", this.state.data);
     const randomId = Math.floor(
       ((Math.random() * 113) / 87 + (Math.random() * 299) / 189) * 1000
     );
