@@ -37,7 +37,6 @@ export default class General extends Component {
     this.setState({
       countryCode,
     });
-    // window.location.reload(false);
   };
 
   render() {

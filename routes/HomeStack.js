@@ -4,6 +4,7 @@ import { createAppContainer } from "react-navigation";
 import Home from "../src/screens/Home";
 import GeneralSource from "../src/sources/General";
 import SpecificSource from "../src/sources/Specific";
+import SearchTopic from "../src/sources/SearchTopic";
 
 const screens = {
   Home: {
@@ -14,6 +15,9 @@ const screens = {
   },
   Specific: {
     screen: SpecificSource,
+  },
+  SearchTopic: {
+    screen: SearchTopic,
   },
 };
 
