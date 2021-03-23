@@ -64,9 +64,20 @@ export default class SearchTopic extends Component {
     let view = this.state.isLoading ? (
       <View>
         <ActivityIndicator animating={this.state.isLoading} />
-        <Text style={{ marginTop: 10 }}>Loading...</Text>
+        <Text
+          style={{
+            alignContent: "center",
+            justifyContent: "center",
+            flex: 1,
+            padding: 100,
+            marginTop: 100,
+            marginLeft: 90,
+          }}
+        >
+          Loading...
+        </Text>
       </View>
-    ) : (
+    ) : this.state.data.length > 0 ? (
       <List
         dataArray={this.state.data}
         renderRow={(item) => {
@@ -80,6 +91,19 @@ export default class SearchTopic extends Component {
           );
         }}
       />
+    ) : (
+      <Text
+        style={{
+          alignContent: "center",
+          justifyContent: "center",
+          flex: 1,
+          padding: 100,
+          marginTop: 100,
+          marginLeft: 30,
+        }}
+      >
+        Sorry! No Results Found :(
+      </Text>
     );
     return (
       <Container>

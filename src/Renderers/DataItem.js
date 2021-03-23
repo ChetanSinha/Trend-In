@@ -42,7 +42,7 @@ export default class DataItem extends Component {
               uri:
                 this.data.urlToImage != null
                   ? this.data.urlToImage
-                  : "https://www.downbeach.com/wp-content/uploads/2019/01/Breaking-News.jpg",
+                  : "https://i.pinimg.com/originals/d1/a6/2a/d1a62a6d8969170025f279115470e34b.jpg",
             }}
           />
         </Left>
