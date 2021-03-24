@@ -5,6 +5,7 @@ import Home from "../src/screens/Home";
 import GeneralSource from "../src/sources/General";
 import SpecificSource from "../src/sources/Specific";
 import SearchTopic from "../src/sources/SearchTopic";
+import Bookmarks from "../src/sources/Bookmarks";
 
 const screens = {
   Home: {
@@ -18,6 +19,9 @@ const screens = {
   },
   SearchTopic: {
     screen: SearchTopic,
+  },
+  Bookmarks: {
+    screen: Bookmarks,
   },
 };
 

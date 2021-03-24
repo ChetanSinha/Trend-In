@@ -4,15 +4,17 @@ import {
   StyleSheet,
   View,
   Image,
-  Button,
   FlatList,
   TextInput,
   TouchableOpacity,
 } from "react-native";
 
+import { Button, Fab, Icon } from "native-base";
+
 import styled from "styled-components";
 
 import { FontAwesome } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 import SourceList from "../sources/sourceList";
 
@@ -27,6 +29,7 @@ export default class MainScreen extends Component {
   handleInput = (inputTopic) => {
     this.setState({
       input: { topic: inputTopic.toLowerCase() },
+      FabActive: false,
     });
   };
 
@@ -92,6 +95,17 @@ export default class MainScreen extends Component {
               </TouchableOpacity>
             )}
           />
+
+          {/* Render BookMarks */}
+          <Fab
+            direction="left"
+            containerStyle={{ fontSize: "100px" }}
+            style={{ backgroundColor: "#2881e0", fontSize: "100px" }}
+            position="topRight"
+            onPress={() => this.props.navigation.navigate("Bookmarks")}
+          >
+            <Ionicons name="bookmarks" size={60} />
+          </Fab>
         </Container>
       </>
     );

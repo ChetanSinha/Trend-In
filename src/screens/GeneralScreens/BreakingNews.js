@@ -86,10 +86,12 @@ export default class ListThumbnailExample extends Component {
         <ActivityIndicator animating={this.state.isLoading} />
         <Text
           style={{
-            marginTop: 10,
-            justifyContent: "center",
             alignContent: "center",
+            justifyContent: "center",
             flex: 1,
+            padding: 100,
+            marginTop: 100,
+            marginLeft: 90,
           }}
         >
           Loading...

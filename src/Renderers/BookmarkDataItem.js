@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { ScrollView, View, FlatList, Alert } from "react-native";
+import {
+  ScrollView,
+  View,
+  FlatList,
+  Alert,
+  TouchableOpacity,
+} from "react-native";
 import TimeAgo from "./TimeAgo";
 
 import {
@@ -15,14 +21,13 @@ import {
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { FontAwesome } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default class DataItem extends Component {
   constructor(props) {
     super(props);
     this.data = props.data;
     this.state = {
-      bookmarkSelected: false,
       newsid: this.getId(this.data),
     };
   }
@@ -48,69 +53,21 @@ export default class DataItem extends Component {
           10000
       );
     }
-
     ID = "id" + ID.toString();
-
     return ID;
   };
 
   handlePress = () => {
     const { url, title } = this.data;
-    this.props.onPress({ url, title });
+    this.props.onView({ url, title });
   };
 
-  AddBookmark = async () => {
-    try {
-      // await AsyncStorage.removeItem("id67647");
-      // await AsyncStorage.removeItem("iduri");
-
-      // const id = console.log("id", this.state.newsid);
-      await AsyncStorage.setItem(this.state.newsid, JSON.stringify(this.data));
-      Alert.alert("Added to Bookmarks");
-    } catch (e) {
-      Alert.alert(
-        "An error occured while adding, please try again after sometime"
-      );
-      console.log(e);
-    }
-  };
-
-  removeBookmark = async () => {
-    try {
-      await AsyncStorage.removeItem(this.state.newsid);
-      Alert.alert("Bookmark Removed");
-
-      // console.log("result ", result);
-    } catch (e) {
-      Alert.alert(
-        "An error occured while adding, please try again after sometime"
-      );
-      console.log(e);
-    }
-  };
-
-  handleBookMark = () => {
-    if (this.state.bookmarkSelected) {
-      this.removeBookmark();
-    } else {
-      this.AddBookmark();
-    }
-
-    this.setState({
-      bookmarkSelected: !this.state.bookmarkSelected,
-    });
+  handleDelete = () => {
+    this.props.onDelete(this.state.newsid);
   };
 
   render() {
-    let title;
-    if (this.props.isSpecific) {
-      title = this.data.title;
-    } else {
-      title = this.data.title.split("-");
-      title.pop();
-    }
-
-    console.log("========================================");
+    const title = this.data.title;
 
     return (
       <ListItem thumbnail>
@@ -147,29 +104,21 @@ export default class DataItem extends Component {
             <TimeAgo time={this.data.publishedAt} />
           </View>
         </Body>
+
         <Right>
-          <Button transparent onPress={this.handlePress} style={{ height: 30 }}>
+          <Button transparent onPress={this.handlePress}>
             <Text>View</Text>
           </Button>
         </Right>
+
         {/* Book Mark Option */}
-        {this.state.bookmarkSelected ? (
-          <Button
-            transparent
-            onPress={this.handleBookMark}
-            style={{ height: 20, width: 20, marginTop: 15, marginRight: 15 }}
-          >
-            <FontAwesome name="bookmark" size={28} color="#2881e0" />
-          </Button>
-        ) : (
-          <Button
-            transparent
-            onPress={this.handleBookMark}
-            style={{ height: 20, width: 20, marginTop: 15, marginRight: 15 }}
-          >
-            <FontAwesome name="bookmark-o" size={28} color="#2881e0" />
-          </Button>
-        )}
+        <Button
+          transparent
+          onPress={this.handleDelete}
+          style={{ height: 30, width: 30, marginTop: 65, marginRight: 20 }}
+        >
+          <MaterialIcons name="delete" size={28} color="#2881e0" />
+        </Button>
       </ListItem>
     );
   }

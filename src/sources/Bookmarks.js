@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Alert, View, ActivityIndicator, Text, ScrollView } from "react-native";
+import { Alert, View, ActivityIndicator, Text, FlatList } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { getArticles } from "../service/GetTopicResults";
-import DataItem from "../Renderers/DataItem";
+import BookmarkDataItem from "../Renderers/BookmarkDataItem";
 import Modal from "../Renderers/Modal";
 
 import {
@@ -18,18 +18,37 @@ import {
   Button,
 } from "native-base";
 
-export default class SearchTopic extends Component {
+export default class Bookmarks extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      topic: this.props.navigation.getParam("topic"),
-      isLoading: true,
-      data: null,
+      data: [],
       setModalVisible: false,
+      isLoading: true,
       modalArticleData: {},
     };
   }
+
+  getBookmarks = async () => {
+    try {
+      const result = [];
+      const keys = await AsyncStorage.getAllKeys();
+      for (const key of keys) {
+        const val = await AsyncStorage.getItem(key);
+        result.push(JSON.parse(val));
+      }
+      this.setState({
+        data: result,
+        isLoading: false,
+      });
+    } catch (e) {
+      Alert.alert(
+        "An error occured while adding, please try again after sometime"
+      );
+      console.log(e);
+    }
+  };
 
   handleModalClose = () => {
     this.setState({
@@ -45,22 +64,28 @@ export default class SearchTopic extends Component {
     });
   };
 
+  handleItemOnDelete = async (id) => {
+    try {
+      await AsyncStorage.removeItem(id);
+      this.getBookmarks();
+      Alert.alert("Bookmark Deleted");
+    } catch (e) {
+      Alert.alert(
+        "An error occured while adding, please try again after sometime"
+      );
+      console.log(e);
+    }
+  };
+
   componentDidMount() {
-    getArticles(this.state.topic).then((data) => {
-      this.setState({
-        isLoading: false,
-        data: data,
-      });
-    }),
-      (error) => {
-        Alert.alert("Error", "something went wrong!");
-      };
+    this.getBookmarks();
   }
 
   render() {
     const randomId = Math.floor(
       ((Math.random() * 113) / 87 + (Math.random() * 299) / 189) * 1000
     );
+
     let view = this.state.isLoading ? (
       <View>
         <ActivityIndicator animating={this.state.isLoading} />
@@ -77,14 +102,15 @@ export default class SearchTopic extends Component {
           Loading...
         </Text>
       </View>
-    ) : this.state.data.length > 0 ? (
+    ) : this.state.data.length ? (
       <List
         dataArray={this.state.data}
         renderRow={(item) => {
           return (
-            <DataItem
+            <BookmarkDataItem
               key={randomId}
-              onPress={this.handleItemDataOnPress}
+              onView={this.handleItemDataOnPress}
+              onDelete={this.handleItemOnDelete}
               data={item}
               isSpecific={true}
             />
@@ -102,9 +128,10 @@ export default class SearchTopic extends Component {
           marginLeft: 30,
         }}
       >
-        Sorry! No Results Found :(
+        No Bookmarks found!
       </Text>
     );
+
     return (
       <Container>
         <Content>{view}</Content>
