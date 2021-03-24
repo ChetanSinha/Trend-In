@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ScrollView, View, FlatList } from "react-native";
+import { ScrollView, View, FlatList, Alert } from "react-native";
 import TimeAgo from "./TimeAgo";
 
 import {
@@ -12,16 +12,29 @@ import {
   Button,
   Container,
 } from "native-base";
+import { FontAwesome } from "@expo/vector-icons";
+import { ThemeConsumer } from "styled-components";
 
 export default class DataItem extends Component {
   constructor(props) {
     super(props);
     this.data = props.data;
+    this.state = {
+      bookmarkSelected: false,
+    };
   }
 
   handlePress = () => {
     const { url, title } = this.data;
     this.props.onPress({ url, title });
+  };
+
+  handleBookMark = () => {
+    this.setState({
+      bookmarkSelected: !this.state.bookmarkSelected,
+    });
+
+    Alert.alert("Added to bookmark");
   };
 
   render() {
@@ -69,10 +82,28 @@ export default class DataItem extends Component {
           </View>
         </Body>
         <Right>
-          <Button transparent onPress={this.handlePress}>
+          <Button transparent onPress={this.handlePress} style={{ height: 30 }}>
             <Text>View</Text>
           </Button>
         </Right>
+        {/* Book Mark Option */}
+        {this.state.bookmarkSelected ? (
+          <Button
+            transparent
+            onPress={this.handleBookMark}
+            style={{ height: 20, width: 20, marginTop: 15, marginRight: 15 }}
+          >
+            <FontAwesome name="bookmark" size={28} color="#2881e0" />
+          </Button>
+        ) : (
+          <Button
+            transparent
+            onPress={this.handleBookMark}
+            style={{ height: 20, width: 20, marginTop: 15, marginRight: 15 }}
+          >
+            <FontAwesome name="bookmark-o" size={28} color="#2881e0" />
+          </Button>
+        )}
       </ListItem>
     );
   }
