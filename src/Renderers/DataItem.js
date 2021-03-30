@@ -61,12 +61,8 @@ export default class DataItem extends Component {
 
   AddBookmark = async () => {
     try {
-      // await AsyncStorage.removeItem("id67647");
-      // await AsyncStorage.removeItem("iduri");
-
-      // const id = console.log("id", this.state.newsid);
       await AsyncStorage.setItem(this.state.newsid, JSON.stringify(this.data));
-      Alert.alert("Added to Bookmarks");
+      Alert.alert("Added to Bookmarks.");
     } catch (e) {
       Alert.alert(
         "An error occured while adding, please try again after sometime"
@@ -78,9 +74,7 @@ export default class DataItem extends Component {
   removeBookmark = async () => {
     try {
       await AsyncStorage.removeItem(this.state.newsid);
-      Alert.alert("Bookmark Removed");
-
-      // console.log("result ", result);
+      Alert.alert("Removed from bookmarks.");
     } catch (e) {
       Alert.alert(
         "An error occured while adding, please try again after sometime"

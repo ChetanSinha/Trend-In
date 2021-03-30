@@ -68,11 +68,9 @@ export default class Bookmarks extends Component {
     try {
       await AsyncStorage.removeItem(id);
       this.getBookmarks();
-      Alert.alert("Bookmark Deleted");
+      Alert.alert("Bookmark deleted.");
     } catch (e) {
-      Alert.alert(
-        "An error occured while adding, please try again after sometime"
-      );
+      Alert.alert("An error occured while adding, please try again later.");
       console.log(e);
     }
   };

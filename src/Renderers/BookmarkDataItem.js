@@ -88,7 +88,6 @@ export default class DataItem extends Component {
           ) : (
             <Text>{title.join(" ")}</Text>
           )}
-
           <Text note numberOfLines={3}>
             {this.data.description}
           </Text>
