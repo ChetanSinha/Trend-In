@@ -6,6 +6,8 @@ import GeneralSource from "../src/sources/General";
 import SpecificSource from "../src/sources/Specific";
 import SearchTopic from "../src/sources/SearchTopic";
 import Bookmarks from "../src/sources/Bookmarks";
+import Reddit from "../src/screens/Reddit";
+import RedditTrends from "../src/sources/RedditTrends";
 
 const screens = {
   Home: {
@@ -22,6 +24,12 @@ const screens = {
   },
   Bookmarks: {
     screen: Bookmarks,
+  },
+  Reddit: {
+    screen: Reddit,
+  },
+  RedditTrends: {
+    screen: RedditTrends,
   },
 };
 

@@ -77,6 +77,17 @@ export default class MainScreen extends Component {
             <Text style={{ color: "white" }}>Breaking News</Text>
           </TouchableOpacity>
 
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => this.props.navigation.navigate("Reddit")}
+          >
+            <Image
+              source={require("../images/reddit.png")}
+              style={{ width: 150, height: 100 }}
+            />
+            <Text style={{ color: "white" }}>Sub Reddit</Text>
+          </TouchableOpacity>
+
           {/* Render Button for list wise specific news */}
           <FlatList
             numColumns={2}
