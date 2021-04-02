@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import { Button, Fab, Icon } from "native-base";
+import { Button, Fab, Icon, Left } from "native-base";
 
 import styled from "styled-components";
 
@@ -38,16 +38,19 @@ export default class MainScreen extends Component {
       <>
         <View
           style={{
-            padding: 5,
+            paddingBottom: 15,
+            paddingTop: 10,
+            paddingRight: 5,
+            paddingLeft: 5,
             flexDirection: "row",
             justifyContent: "space-around",
             elevation: 5,
-            backgroundColor: "white",
+            backgroundColor: "#0B3861",
           }}
         >
           {/* <Ionicons name="md-arrow-back" size={24} /> */}
           <TextInput
-            style={{ width: "85%", backgroundColor: "#e6e6e6" }}
+            style={{ width: "85%", height: "120%", backgroundColor: "#e6e6e6" }}
             value={this.state.input.topic}
             placeholder=" Search Topics"
             onChangeText={this.handleInput}
@@ -55,8 +58,8 @@ export default class MainScreen extends Component {
 
           <FontAwesome
             name="search"
-            size={24}
-            color="black"
+            size={30}
+            color="white"
             onPress={() =>
               this.state.input.topic !== "" &&
               this.props.navigation.navigate("SearchTopic", this.state.input)
@@ -65,44 +68,61 @@ export default class MainScreen extends Component {
         </View>
 
         <Container>
-          {/* Render Button for General News */}
-          <TouchableOpacity
-            activeOpacity={0.5}
-            onPress={() => this.props.navigation.navigate("General")}
-          >
-            <Image
-              source={require("../images/general.jpeg")}
-              style={{ width: 150, height: 100 }}
-            />
-            <Text style={{ color: "white" }}>Breaking News</Text>
-          </TouchableOpacity>
+          <View style={styles.container}>
+            {/* Render Button for General News */}
+            <TouchableOpacity
+              activeOpacity={0.5}
+              onPress={() => this.props.navigation.navigate("General")}
+              style={{ marginRight: 20 }}
+            >
+              <Image
+                source={require("../images/general.jpeg")}
+                style={{ width: 170, height: 110 }}
+              />
+              <Text
+                style={{ color: "white", alignSelf: "center", padding: 10 }}
+              >
+                Global Breaking News
+              </Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity
-            activeOpacity={0.5}
-            onPress={() => this.props.navigation.navigate("Reddit")}
-          >
-            <Image
-              source={require("../images/reddit.png")}
-              style={{ width: 150, height: 100 }}
-            />
-            <Text style={{ color: "white" }}>Sub Reddit</Text>
-          </TouchableOpacity>
-
+            <TouchableOpacity
+              activeOpacity={0.5}
+              onPress={() => this.props.navigation.navigate("Reddit")}
+              style={{ marginLeft: 20 }}
+            >
+              <Image
+                source={require("../images/reddit.png")}
+                style={{ width: 170, height: 110 }}
+              />
+              <Text
+                style={{ color: "white", alignSelf: "center", padding: 10 }}
+              >
+                Sub Reddit
+              </Text>
+            </TouchableOpacity>
+          </View>
           {/* Render Button for list wise specific news */}
           <FlatList
             numColumns={2}
+            columnWrapperStyle={{ justifyContent: "space-between" }}
             keyExtractor={(item) => item.id.toString()}
             data={this.state.specificSources}
             renderItem={({ item }) => (
               <TouchableOpacity
                 activeOpacity={0.5}
                 onPress={() => this.props.navigation.navigate("Specific", item)}
+                style={styles.sources}
               >
                 <Image
                   source={item.image}
-                  style={{ width: 150, height: 100 }}
+                  style={{ width: 170, height: 110 }}
                 />
-                <Text style={{ color: "white" }}>{item.title}</Text>
+                <Text
+                  style={{ color: "white", alignSelf: "center", padding: 10 }}
+                >
+                  {item.title}
+                </Text>
               </TouchableOpacity>
             )}
           />
@@ -110,12 +130,11 @@ export default class MainScreen extends Component {
           {/* Render BookMarks */}
           <Fab
             direction="left"
-            containerStyle={{ fontSize: "100px" }}
-            style={{ backgroundColor: "#2881e0", fontSize: "100px" }}
-            position="topRight"
+            style={{ backgroundColor: "#2881e0" }}
+            position="bottomRight"
             onPress={() => this.props.navigation.navigate("Bookmarks")}
           >
-            <Ionicons name="bookmarks" size={60} />
+            <Ionicons name="bookmarks" size={100} />
           </Fab>
         </Container>
       </>
@@ -129,3 +148,13 @@ const Container = styled.View`
   justify-content: center;
   align-items: center;
 `;
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    margin: 20,
+  },
+  sources: {
+    margin: 20,
+  },
+});

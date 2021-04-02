@@ -13,6 +13,7 @@ import {
   ListItem,
   Thumbnail,
   Left,
+  Title,
   Body,
   Right,
   Button,
@@ -29,6 +30,16 @@ export default class Specific extends Component {
       modalArticleData: {},
     };
   }
+
+  getName = (source) => {
+    const sourceName = source.split("-");
+
+    const newSource = sourceName.map((item) => {
+      return item.toUpperCase()[0] + item.toLowerCase().slice(1);
+    });
+
+    return newSource.join(" ");
+  };
 
   handleModalClose = () => {
     this.setState({
@@ -57,9 +68,12 @@ export default class Specific extends Component {
   }
 
   render() {
+    const sourceName = this.getName(this.state.source);
+
     const randomId = Math.floor(
       ((Math.random() * 113) / 87 + (Math.random() * 299) / 189) * 1000
     );
+
     let view = this.state.isLoading ? (
       <View>
         <ActivityIndicator animating={this.state.isLoading} />
@@ -93,6 +107,13 @@ export default class Specific extends Component {
     );
     return (
       <Container>
+        <Header style={{ backgroundColor: "#0B3861" }}>
+          <Body>
+            <Title style={{ color: "white", alignSelf: "center" }}>
+              Trendings from: {sourceName}
+            </Title>
+          </Body>
+        </Header>
         <Content>{view}</Content>
         <Modal
           key={randomId}

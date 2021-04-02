@@ -28,26 +28,22 @@ export default class DataItem extends Component {
   }
 
   getId = (data) => {
-    let ID;
-    try {
-      ID = Math.floor(
-        (data.source.name.length / 23 +
-          data.title.length / 61 +
-          data.description.length / 127 +
-          data.content.length / 149 +
-          data.url.length / 47) *
-          10000
-      );
-    } catch (e) {
-      // console.log(data);
-      ID = Math.floor(
-        (data.source.name.length / 23 +
-          data.title.length / 61 +
-          (data.title.length * data.source.name.length) / 171 +
-          data.url.length / 47) *
-          10000
-      );
-    }
+    let ID = 0;
+
+    if (data.source.name) ID += data.source.name.length / 23;
+
+    if (data.title) ID += data.title.length / 61;
+
+    if (data.description) ID += data.description.length / 127;
+
+    if (data.content) ID += data.content.length / 149;
+
+    if (data.url) ID += data.url.length / 47;
+
+    if (data.title && data.source.name)
+      ID += (data.title.length * data.source.name.length) / 171;
+
+    ID = Math.floor(ID * 1000);
 
     ID = "id" + ID.toString();
 
@@ -103,8 +99,6 @@ export default class DataItem extends Component {
       title = this.data.title.split("-");
       title.pop();
     }
-
-    console.log("========================================");
 
     return (
       <ListItem thumbnail>

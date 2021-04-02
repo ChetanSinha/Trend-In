@@ -121,9 +121,9 @@ export default class SearchTopic extends Component {
     );
     return (
       <Container>
-        <Header style={{ backgroundColor: "white" }}>
+        <Header style={{ backgroundColor: "#0B3861" }}>
           <Body>
-            <Title style={{ color: "#2881e0" }}>
+            <Title style={{ color: "white", alignSelf: "center" }}>
               Showing Subreddit:{" "}
               {this.state.topic.toUpperCase()[0] +
                 this.state.topic.toLowerCase().slice(1)}

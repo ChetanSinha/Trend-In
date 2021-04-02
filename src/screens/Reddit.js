@@ -31,15 +31,18 @@ export default class Reddit extends Component {
       <>
         <View
           style={{
-            padding: 5,
+            paddingBottom: 15,
+            paddingTop: 10,
+            paddingRight: 5,
+            paddingLeft: 5,
             flexDirection: "row",
             justifyContent: "space-around",
             elevation: 5,
-            backgroundColor: "white",
+            backgroundColor: "#0B3861",
           }}
         >
           <TextInput
-            style={{ width: "85%", backgroundColor: "#e6e6e6" }}
+            style={{ width: "85%", height: "130%", backgroundColor: "#e6e6e6" }}
             value={this.state.input.topic}
             placeholder=" Search Subreddit"
             onChangeText={this.handleInput}
@@ -47,8 +50,8 @@ export default class Reddit extends Component {
 
           <FontAwesome
             name="search"
-            size={24}
-            color="black"
+            size={30}
+            color="white"
             onPress={() =>
               this.state.input.topic !== "" &&
               this.props.navigation.navigate("RedditTrends", this.state.input)

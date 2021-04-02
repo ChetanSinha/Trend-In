@@ -47,11 +47,11 @@ export default class General extends Component {
           <Header style={{ backgroundColor: "#0B3861" }} hasTabs>
             <Left />
             <Body>
-              <Title style={{ color: "white" }}>Breaking News</Title>
+              <Title style={{ color: "white" }}>Breaking News 🌏</Title>
             </Body>
             <Left />
             <Right>
-              <Container>
+              <Container style={{ height: "20%" }}>
                 <Picker onPick={this.handleCountryPicker} />
               </Container>
             </Right>

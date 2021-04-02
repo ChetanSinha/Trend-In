@@ -13,6 +13,7 @@ import {
   ListItem,
   Thumbnail,
   Left,
+  Title,
   Body,
   Right,
   Button,
@@ -107,6 +108,15 @@ export default class SearchTopic extends Component {
     );
     return (
       <Container>
+        <Header style={{ backgroundColor: "#0B3861" }}>
+          <Body>
+            <Title style={{ color: "white", alignSelf: "center" }}>
+              Showing Trendings for:{" "}
+              {this.state.topic.toUpperCase()[0] +
+                this.state.topic.toLowerCase().slice(1)}
+            </Title>
+          </Body>
+        </Header>
         <Content>{view}</Content>
         <Modal
           key={randomId}

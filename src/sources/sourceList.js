@@ -25,13 +25,13 @@ const sources = [
   },
   {
     id: 5,
-    name: "espn-cric-info",
+    name: "the-new-york-times",
     title: "The New York Times",
     image: require("../images/thenewyorktimes.png"),
   },
   {
     id: 6,
-    name: "the-new-york-times",
+    name: "espn-cric-info",
     title: "ESPN Cric Info",
     image: require("../images/espncricinfo.png"),
   },

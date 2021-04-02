@@ -12,10 +12,12 @@ import {
   List,
   ListItem,
   Thumbnail,
+  Title,
   Left,
   Body,
   Right,
   Button,
+  Icon,
 } from "native-base";
 
 export default class Bookmarks extends Component {
@@ -36,6 +38,7 @@ export default class Bookmarks extends Component {
       const keys = await AsyncStorage.getAllKeys();
       for (const key of keys) {
         const val = await AsyncStorage.getItem(key);
+        console.log("bookmarks", JSON.parse(val));
         result.push(JSON.parse(val));
       }
       this.setState({
@@ -73,6 +76,15 @@ export default class Bookmarks extends Component {
       Alert.alert("An error occured while adding, please try again later.");
       console.log(e);
     }
+  };
+
+  deleteAllBookmark = async () => {
+    AsyncStorage.getAllKeys()
+      .then((keys) => AsyncStorage.multiRemove(keys))
+      .then(() => {
+        Alert.alert("All bookmarks deleted.");
+        this.getBookmarks();
+      });
   };
 
   componentDidMount() {
@@ -132,6 +144,18 @@ export default class Bookmarks extends Component {
 
     return (
       <Container>
+        <Header style={{ backgroundColor: "#0B3861" }}>
+          <Body>
+            <Title style={{ color: "white", alignSelf: "center" }}>
+              Your Bookmarks 🔖
+            </Title>
+          </Body>
+          <Right>
+            <Button transparent onPress={this.deleteAllBookmark}>
+              <Text style={{ color: "white", fontSize: 20 }}>Delete All</Text>
+            </Button>
+          </Right>
+        </Header>
         <Content>{view}</Content>
         <Modal
           key={randomId}
