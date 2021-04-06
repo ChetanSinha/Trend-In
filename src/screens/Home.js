@@ -48,10 +48,9 @@ export default class MainScreen extends Component {
             backgroundColor: "#0B3861",
           }}
         >
-          {/* <Ionicons name="md-arrow-back" size={24} /> */}
           <TextInput
             style={{ width: "85%", height: "120%", backgroundColor: "#e6e6e6" }}
-            value={this.state.input.topic}
+            value={this.state.input.topic.toUpperCase()}
             placeholder=" Search Topics"
             onChangeText={this.handleInput}
           />
