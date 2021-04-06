@@ -25,9 +25,9 @@ const sources = [
   },
   {
     id: 5,
-    name: "the-new-york-times",
-    title: "The New York Times",
-    image: require("../images/thenewyorktimes.png"),
+    name: "abc-news-au",
+    title: "ABC News (AU)",
+    image: require("../images/abcnews.jpg"),
   },
   {
     id: 6,

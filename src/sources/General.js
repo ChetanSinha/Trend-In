@@ -39,6 +39,11 @@ export default class General extends Component {
     });
   };
 
+  renderTabBar = (props) => {
+    props.tabStyle = Object.create(props.tabStyle);
+    return <ScrollableTab {...props} />;
+  };
+
   render() {
     console.log(this.state.countryCode);
     return (
@@ -58,7 +63,7 @@ export default class General extends Component {
           </Header>
 
           <Tabs
-            renderTabBar={() => <ScrollableTab />}
+            renderTabBar={this.renderTabBar}
             tabBarUnderlineStyle={{ backgroundColor: "white" }}
           >
             <Tab

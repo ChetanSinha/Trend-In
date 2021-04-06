@@ -24,9 +24,13 @@ export default class RedditDataItem extends Component {
   };
 
   render() {
+    const randomId = Math.floor(
+      ((Math.random() * 113) / 87 + (Math.random() * 299) / 189) * 1000
+    );
+
     return (
       <>
-        <ListItem thumbnail>
+        <ListItem thumbnail key={randomId}>
           <Left>
             <Thumbnail
               square

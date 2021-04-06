@@ -3,6 +3,8 @@ import React from "react";
 
 import { Text } from "native-base";
 
+import { LogBox } from "react-native";
+
 // native base requirements
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
@@ -29,6 +31,10 @@ export default class App extends React.Component {
   }
 
   render() {
+    LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
+    LogBox.ignoreLogs([
+      "VirtualizedList: missing keys for items, make sure to specify a key or id property on each item or provide a custom keyExtractor.",
+    ]);
     if (!this.state.isReady) {
       return <Text>Loading...</Text>;
     }
