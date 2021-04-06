@@ -67,8 +67,6 @@ export default class ListThumbnailExample extends Component {
         (error) => {
           Alert.alert("Error", "something went wrong!");
         };
-    } else {
-      console.log("same");
     }
   }
 

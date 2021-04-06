@@ -95,7 +95,6 @@ export default class SearchTopic extends Component {
       <List
         dataArray={this.state.data}
         renderRow={(item) => {
-          console.log("item", item.data);
           return (
             <RedditDataItem
               key={randomId}

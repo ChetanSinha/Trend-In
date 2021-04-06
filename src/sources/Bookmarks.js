@@ -35,12 +35,21 @@ export default class Bookmarks extends Component {
   getBookmarks = async () => {
     try {
       const result = [];
-      const keys = await AsyncStorage.getAllKeys();
-      for (const key of keys) {
-        const val = await AsyncStorage.getItem(key);
-        console.log("bookmarks", JSON.parse(val));
-        result.push(JSON.parse(val));
+      let keys;
+
+      try {
+        keys = await AsyncStorage.getAllKeys();
+      } catch {
+        throw new Error(400);
       }
+
+      if (keys.length) {
+        for (const key of keys) {
+          const val = await AsyncStorage.getItem(key);
+          result.push(JSON.parse(val));
+        }
+      }
+
       this.setState({
         data: result,
         isLoading: false,
@@ -84,6 +93,9 @@ export default class Bookmarks extends Component {
       .then(() => {
         Alert.alert("All bookmarks deleted.");
         this.getBookmarks();
+      })
+      .catch((error) => {
+        Alert.alert("No bookmark to delete!");
       });
   };
 

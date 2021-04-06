@@ -45,7 +45,6 @@ export default class General extends Component {
   };
 
   render() {
-    console.log(this.state.countryCode);
     return (
       <>
         <Container>

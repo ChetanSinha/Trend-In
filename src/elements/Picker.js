@@ -25,7 +25,10 @@ export default class PickerWithIcon extends Component {
         mode="dropdown"
         // iosHeader="Select Country"
         iosIcon={<Icon name="arrow-down" />}
-        style={{ width: 150, height: 50 }}
+        style={{
+          width: 150,
+          height: 50,
+        }}
         selectedValue={this.state.selected}
         onValueChange={this.onValueChange.bind(this)}
       >

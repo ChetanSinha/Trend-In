@@ -57,10 +57,6 @@ export default class ListThumbnailExample extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // console.log("prev state country code", prevState.countryCode);
-    // console.log("prev prop ", prevProps);
-    // console.log("current prop", this.props.country);
-
     if (prevProps.country !== this.props.country) {
       getArticles("business", this.props.country).then((data) => {
         this.setState({
@@ -71,8 +67,6 @@ export default class ListThumbnailExample extends Component {
         (error) => {
           Alert.alert("Error", "something went wrong!");
         };
-    } else {
-      console.log("same");
     }
   }
 
