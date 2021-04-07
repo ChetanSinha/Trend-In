@@ -91,6 +91,19 @@ export default class DataItem extends Component {
     });
   };
 
+  validURL = (str) => {
+    var pattern = new RegExp(
+      "^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    ); // fragment locator
+    return !!pattern.test(str);
+  };
+
   render() {
     let title;
     if (this.props.isSpecific) {
@@ -100,16 +113,17 @@ export default class DataItem extends Component {
       title.pop();
     }
 
+    const isValidURL = this.validURL(this.data.urlToImage);
+
     return (
       <ListItem thumbnail>
         <Left>
           <Thumbnail
             square
             source={{
-              uri:
-                this.data.urlToImage != null
-                  ? this.data.urlToImage
-                  : "https://i.pinimg.com/originals/d1/a6/2a/d1a62a6d8969170025f279115470e34b.jpg",
+              uri: isValidURL
+                ? this.data.urlToImage
+                : "https://iotcdn.oss-ap-southeast-1.aliyuncs.com/News-Image.jpg",
             }}
           />
         </Left>

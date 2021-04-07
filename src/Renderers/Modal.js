@@ -34,11 +34,26 @@ export default class ModalComponent extends Component {
     );
   };
 
+  validURL = (str) => {
+    var pattern = new RegExp(
+      "^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    ); // fragment locator
+    return !!pattern.test(str);
+  };
+
   render() {
     const { showModal, articleData } = this.props;
     const { url } = articleData;
 
-    if (url != undefined) {
+    const isValidURL = this.validURL(url);
+
+    if (isValidURL) {
       return (
         <Modal
           animationType="slide"
@@ -49,16 +64,16 @@ export default class ModalComponent extends Component {
           <Container
             style={{ margin: 15, marginBottom: 0, backgroundColor: "#fff" }}
           >
-            <Header style={{ backgroundColor: "#0B3861" }}>
+            <Header style={{ backgroundColor: "#fff" }}>
               <Left>
                 <Button onPress={this.handleClose} transparent>
-                  <Icon name="close" style={{ color: "white", fontSize: 24 }} />
+                  <Icon name="close" style={{ color: "black", fontSize: 24 }} />
                 </Button>
               </Left>
               <Body>
                 <Title
                   children={articleData.title}
-                  style={{ color: "#fff" }}
+                  style={{ color: "#000" }}
                 ></Title>
               </Body>
               <Right>
@@ -66,13 +81,13 @@ export default class ModalComponent extends Component {
                   <Ionicons
                     name="md-share-social-outline"
                     size={24}
-                    color="white"
+                    color="black"
                   />
                 </Button>
               </Right>
             </Header>
             {/* <View> */}
-            <Content contentContainerStyle={{ height: 700 }}>
+            <Content contentContainerStyle={{ flex: 1 }}>
               <WebView
                 source={{ uri: url }}
                 style={{ flex: 1 }}

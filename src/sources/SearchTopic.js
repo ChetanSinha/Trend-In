@@ -26,7 +26,7 @@ export default class SearchTopic extends Component {
     this.state = {
       topic: this.props.navigation.getParam("topic"),
       isLoading: true,
-      data: null,
+      data: [],
       setModalVisible: false,
       modalArticleData: {},
     };
@@ -47,6 +47,7 @@ export default class SearchTopic extends Component {
   };
 
   componentDidMount() {
+    console.log("topic2", this.state.topic);
     getArticles(this.state.topic).then((data) => {
       this.setState({
         isLoading: false,
@@ -108,9 +109,9 @@ export default class SearchTopic extends Component {
     );
     return (
       <Container>
-        <Header style={{ backgroundColor: "#0B3861" }}>
+        <Header style={{ backgroundColor: "#ffffff" }}>
           <Body>
-            <Title style={{ color: "white", alignSelf: "center" }}>
+            <Title style={{ color: "black", alignSelf: "center" }}>
               Showing Trendings for:{" "}
               {this.state.topic.toUpperCase()[0] +
                 this.state.topic.toLowerCase().slice(1)}

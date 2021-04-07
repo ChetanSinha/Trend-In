@@ -1,14 +1,5 @@
 import React, { Component } from "react";
 import { View, TextInput } from "react-native";
-import {
-  Container,
-  Header,
-  Item,
-  Input,
-  Icon,
-  Button,
-  Text,
-} from "native-base";
 
 import { Ionicons } from "@expo/vector-icons";
 
@@ -28,8 +19,6 @@ export default class SearchBarExample extends Component {
       input: { topic: inputTopic.toLowerCase() },
     });
   };
-
-  handleSubmit = () => {};
 
   render() {
     console.log(this.state.input.topic);

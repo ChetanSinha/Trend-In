@@ -37,7 +37,7 @@ export default class SearchTopic extends Component {
     try {
       topic = this.props.navigation.getParam("topic");
     } catch (err) {
-      topic = "trending";
+      topic = "worldnews";
     }
 
     return topic;
@@ -120,9 +120,9 @@ export default class SearchTopic extends Component {
     );
     return (
       <Container>
-        <Header style={{ backgroundColor: "#0B3861" }}>
+        <Header style={{ backgroundColor: "#fff" }}>
           <Body>
-            <Title style={{ color: "white", alignSelf: "center" }}>
+            <Title style={{ color: "black", alignSelf: "center" }}>
               Showing Subreddit:{" "}
               {this.state.topic.toUpperCase()[0] +
                 this.state.topic.toLowerCase().slice(1)}

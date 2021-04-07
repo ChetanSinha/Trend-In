@@ -13,7 +13,7 @@ const screens = {
   Home: {
     screen: Home,
     navigationOptions: {
-      title: "Fresh Off the World 🔥",
+      title: "Fresh Off the World",
     },
   },
   General: {
@@ -32,21 +32,21 @@ const screens = {
   SearchTopic: {
     screen: SearchTopic,
     navigationOptions: {
-      title: "Search 🔍",
+      title: "Search",
       headerShown: false,
     },
   },
   Bookmarks: {
     screen: Bookmarks,
     navigationOptions: {
-      title: "Your Bookmarks 🔖",
+      title: "Your Bookmarks",
       headerShown: false,
     },
   },
   Reddit: {
     screen: Reddit,
     navigationOptions: {
-      title: "Sub Reddits 💟",
+      title: "Sub Reddits",
       headerShown: false,
     },
   },
@@ -61,8 +61,9 @@ const screens = {
 
 const HomeStack = createStackNavigator(screens, {
   defaultNavigationOptions: {
-    headerTintColor: "#ffffff",
-    headerStyle: { backgroundColor: "#0B3861" },
+    headerTintColor: "#000000",
+    headerStyle: { backgroundColor: "#ffffff" },
+    headerTitleStyle: { fontSize: 25 },
   },
 });
 

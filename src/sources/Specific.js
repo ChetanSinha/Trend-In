@@ -107,9 +107,9 @@ export default class Specific extends Component {
     );
     return (
       <Container>
-        <Header style={{ backgroundColor: "#0B3861" }}>
+        <Header style={{ backgroundColor: "#ffffff" }}>
           <Body>
-            <Title style={{ color: "white", alignSelf: "center" }}>
+            <Title style={{ color: "black", alignSelf: "center" }}>
               Trendings from: {sourceName}
             </Title>
           </Body>

@@ -156,15 +156,15 @@ export default class Bookmarks extends Component {
 
     return (
       <Container>
-        <Header style={{ backgroundColor: "#0B3861" }}>
+        <Header style={{ backgroundColor: "#ffffff" }}>
           <Body>
-            <Title style={{ color: "white", alignSelf: "center" }}>
-              Your Bookmarks 🔖
+            <Title style={{ color: "black", alignSelf: "center" }}>
+              Your Bookmarks
             </Title>
           </Body>
           <Right>
             <Button transparent onPress={this.deleteAllBookmark}>
-              <Text style={{ color: "white", fontSize: 20 }}>Delete All</Text>
+              <Text style={{ color: "black", fontSize: 20 }}>Delete All</Text>
             </Button>
           </Right>
         </Header>

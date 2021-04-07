@@ -21,6 +21,7 @@ import SourceList from "../sources/sourceList";
 export default class MainScreen extends Component {
   state = {
     specificSources: SourceList,
+    topic: "",
     input: {
       topic: "",
     },
@@ -28,12 +29,14 @@ export default class MainScreen extends Component {
 
   handleInput = (inputTopic) => {
     this.setState({
+      topic: inputTopic,
       input: { topic: inputTopic.toLowerCase() },
       FabActive: false,
     });
   };
 
   render() {
+    console.log("topic", this.state.input.topic);
     return (
       <>
         <View
@@ -45,12 +48,12 @@ export default class MainScreen extends Component {
             flexDirection: "row",
             justifyContent: "space-around",
             elevation: 5,
-            backgroundColor: "#0B3861",
+            backgroundColor: "#ffffff",
           }}
         >
           <TextInput
-            style={{ width: "85%", height: "120%", backgroundColor: "#e6e6e6" }}
-            value={this.state.input.topic.toUpperCase()}
+            style={{ width: "85%", height: "120%", backgroundColor: "#ffffff" }}
+            value={this.state.topic}
             placeholder=" Search Topics"
             onChangeText={this.handleInput}
           />
@@ -58,7 +61,7 @@ export default class MainScreen extends Component {
           <FontAwesome
             name="search"
             size={30}
-            color="white"
+            color="black"
             onPress={() =>
               this.state.input.topic !== "" &&
               this.props.navigation.navigate("SearchTopic", this.state.input)
@@ -75,13 +78,13 @@ export default class MainScreen extends Component {
               style={{ marginRight: 20 }}
             >
               <Image
-                source={require("../images/general.jpeg")}
-                style={{ width: 170, height: 110 }}
+                source={require("../images/trendin.jpg")}
+                style={{ width: 150, height: 110 }}
               />
               <Text
-                style={{ color: "white", alignSelf: "center", padding: 10 }}
+                style={{ color: "black", alignSelf: "center", padding: 10 }}
               >
-                Global Breaking News
+                Trending Now
               </Text>
             </TouchableOpacity>
 
@@ -91,16 +94,17 @@ export default class MainScreen extends Component {
               style={{ marginLeft: 20 }}
             >
               <Image
-                source={require("../images/reddit.png")}
-                style={{ width: 170, height: 110 }}
+                source={require("../images/reddit.jpg")}
+                style={{ width: 150, height: 110 }}
               />
               <Text
-                style={{ color: "white", alignSelf: "center", padding: 10 }}
+                style={{ color: "black", alignSelf: "center", padding: 10 }}
               >
-                Sub Reddit
+                Reddit
               </Text>
             </TouchableOpacity>
           </View>
+
           {/* Render Button for list wise specific news */}
           <FlatList
             numColumns={2}
@@ -115,10 +119,10 @@ export default class MainScreen extends Component {
               >
                 <Image
                   source={item.image}
-                  style={{ width: 170, height: 110 }}
+                  style={{ width: 150, height: 110 }}
                 />
                 <Text
-                  style={{ color: "white", alignSelf: "center", padding: 10 }}
+                  style={{ color: "black", alignSelf: "center", padding: 10 }}
                 >
                   {item.title}
                 </Text>
@@ -129,7 +133,7 @@ export default class MainScreen extends Component {
           {/* Render BookMarks */}
           <Fab
             direction="left"
-            style={{ backgroundColor: "#2881e0" }}
+            style={{ backgroundColor: "black" }}
             position="bottomRight"
             onPress={() => this.props.navigation.navigate("Bookmarks")}
           >
@@ -143,7 +147,7 @@ export default class MainScreen extends Component {
 
 const Container = styled.View`
   flex: 1;
-  background-color: #0b3861;
+  background-color: #ffffff;
   justify-content: center;
   align-items: center;
 `;
@@ -152,8 +156,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     margin: 20,
+    marginBottom: 0,
   },
   sources: {
     margin: 20,
+    marginBottom: -15,
   },
 });

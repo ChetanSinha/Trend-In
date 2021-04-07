@@ -48,10 +48,10 @@ export default class General extends Component {
     return (
       <>
         <Container>
-          <Header style={{ backgroundColor: "#0B3861" }} hasTabs>
+          <Header style={{ backgroundColor: "#ffffff" }} hasTabs>
             <Left />
             <Body>
-              <Title style={{ color: "white" }}>Breaking News 🌏</Title>
+              <Title style={{ color: "black" }}>Trending News</Title>
             </Body>
             <Left />
             <Right>
@@ -63,50 +63,50 @@ export default class General extends Component {
 
           <Tabs
             renderTabBar={this.renderTabBar}
-            tabBarUnderlineStyle={{ backgroundColor: "white" }}
+            tabBarUnderlineStyle={{ backgroundColor: "black" }}
           >
             <Tab
-              tabStyle={{ backgroundColor: "#0B3861" }}
-              activeTabStyle={{ backgroundColor: "#0B3861" }}
-              textStyle={{ color: "white" }}
-              activeTextStyle={{ color: "white" }}
+              tabStyle={{ backgroundColor: "#ffffff" }}
+              activeTabStyle={{ backgroundColor: "#ffffff" }}
+              textStyle={{ color: "black" }}
+              activeTextStyle={{ color: "black" }}
               heading="General"
             >
               <BreakingNews country={this.state.countryCode} />
             </Tab>
 
             <Tab
-              tabStyle={{ backgroundColor: "#0B3861" }}
-              activeTabStyle={{ backgroundColor: "#0B3861" }}
-              textStyle={{ color: "white" }}
-              activeTextStyle={{ color: "white" }}
+              tabStyle={{ backgroundColor: "#ffffff" }}
+              activeTabStyle={{ backgroundColor: "#ffffff" }}
+              textStyle={{ color: "black" }}
+              activeTextStyle={{ color: "black" }}
               heading="Business"
             >
               <Business country={this.state.countryCode} />
             </Tab>
             <Tab
-              tabStyle={{ backgroundColor: "#0B3861" }}
-              activeTabStyle={{ backgroundColor: "#0B3861" }}
-              textStyle={{ color: "white" }}
-              activeTextStyle={{ color: "white" }}
+              tabStyle={{ backgroundColor: "#ffffff" }}
+              activeTabStyle={{ backgroundColor: "#ffffff" }}
+              textStyle={{ color: "black" }}
+              activeTextStyle={{ color: "black" }}
               heading="Technology"
             >
               <Tech country={this.state.countryCode} />
             </Tab>
             <Tab
-              tabStyle={{ backgroundColor: "#0B3861" }}
-              activeTabStyle={{ backgroundColor: "#0B3861" }}
-              textStyle={{ color: "white" }}
-              activeTextStyle={{ color: "white" }}
+              tabStyle={{ backgroundColor: "#ffffff" }}
+              activeTabStyle={{ backgroundColor: "#ffffff" }}
+              textStyle={{ color: "black" }}
+              activeTextStyle={{ color: "black" }}
               heading="Sports"
             >
               <Sports country={this.state.countryCode} />
             </Tab>
             <Tab
-              tabStyle={{ backgroundColor: "#0B3861" }}
-              activeTabStyle={{ backgroundColor: "#0B3861" }}
-              textStyle={{ color: "white" }}
-              activeTextStyle={{ color: "white" }}
+              tabStyle={{ backgroundColor: "#ffffff" }}
+              activeTabStyle={{ backgroundColor: "#ffffff" }}
+              textStyle={{ color: "black" }}
+              activeTextStyle={{ color: "black" }}
               heading="Health Care"
             >
               <Health country={this.state.countryCode} />
