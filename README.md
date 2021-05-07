@@ -2,7 +2,7 @@ An application developed using React Native with Native Base that aims to provid
 
 #### How to run:
   1. Clone the repository: `git clone REPO_URL`.
-  2. Navigate to the cloned directory: `cd Fresh-Off-the-World`.
+  2. Navigate to the cloned directory: `cd Trend-In`.
   3. Initialize npm: `npm install`.
   4. start the app: `npm start`.
   5. you can run the app in three ways:  
