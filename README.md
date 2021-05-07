@@ -18,3 +18,8 @@ An application developed using React Native with Native Base that aims to provid
   5. Option to share news articles and posts with friends and family.
   6. Option to view news articles and posts in detail at their respective sources.
 
+#### Screenshots:
+
+<img src="images/A.jpeg" alt="drawing" width="200"/>  <img src="images/B.jpeg" alt="drawing" width="200"/> <img src="images/C.jpeg" alt="drawing" width="200"/>
+
+<img src="images/E.jpeg" alt="drawing" width="200"/> <img src="images/D.jpeg" alt="drawing" width="200"/> <img src="images/F.jpeg" alt="drawing" width="200"/>
