@@ -47,7 +47,6 @@ export default class SearchTopic extends Component {
   };
 
   componentDidMount() {
-    console.log("topic2", this.state.topic);
     getArticles(this.state.topic).then((data) => {
       this.setState({
         isLoading: false,
